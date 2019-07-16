@@ -37,4 +37,10 @@ public class MusicPlayer {
         for(Music music : musicList)
             System.out.println("Playing: " + music.getSong());
     }
+    public void doMyInit(){
+        System.out.println("Doing my initialization");
+    }
+    public void doMyDestroy(){
+        System.out.println("Doing my destruction");
+    }
 }
