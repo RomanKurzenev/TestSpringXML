@@ -11,8 +11,11 @@ public class MusicPlayer {
 
     private int volume;
 
-    public MusicPlayer(){}
+    private MusicPlayer(){}
 
+    public static MusicPlayer getMusicPlayer(){
+        return new MusicPlayer();
+    }
     public String getName() {
         return name;
     }

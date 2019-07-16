@@ -20,6 +20,7 @@ public class TestSpring {
           System.out.println(musicPlayer1.getName());
           musicPlayer1.setVolume(50);
           System.out.println(musicPlayer1.getVolume());
+          System.out.println(musicPlayer.equals(musicPlayer1));
 
         context.close();
     }

@@ -24,9 +24,10 @@
     </bean>
     <bean id="musicPlayer"
           class="ru.kurzenev.springcourse.MusicPlayer"
-          scope="prototype"
+
           init-method="doMyInit"
-          destroy-method="doMyDestroy">
+          destroy-method="doMyDestroy"
+          factory-method="getMusicPlayer">
           <property name="music">
               <list>
                   <ref bean="musicRock"/>
