@@ -1,18 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans  xmlns="http://www.springframework.org/schema/beans"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:context="http://www.springframework.org/schema/context"
-        xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-    <bean id="musicBean"
+    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+
+    <bean id="musicRock"
+          class="ru.kurzenev.springcourse.RockMusic">
+    </bean>
+    <bean id="musicPop"
+          class="ru.kurzenev.springcourse.PopMusic">
+    </bean>
+    <bean id="musicClassical"
           class="ru.kurzenev.springcourse.ClassicalMusic">
+    </bean>
+    <bean id="musicRap"
+          class="ru.kurzenev.springcourse.RapMusic">
     </bean>
     <bean id="musicPlayer"
           class="ru.kurzenev.springcourse.MusicPlayer">
-          <constructor-arg ref="musicBean"/>
+          <property name="music">
+              <list>
+                  <ref bean="musicRock"/>
+                  <ref bean="musicClassical"/>
+                  <ref bean="musicPop"/>
+                  <ref bean="musicRap"/>
+              </list>
+          </property>
+
+          <property name="name"  value="${musicPlayer.name}"/>
+          <property name="volume" value="${musicPlayer.voluem}"/>
     </bean>
 
 </beans>
